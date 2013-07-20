@@ -1,3 +1,4 @@
 Django==1.5.1
 distribute==0.6.34
+django-zurb-foundation==4.3.0
 wsgiref==0.1.2
