@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<!--[if IE 8]> <html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    {% block meta %}{% endblock %}
+    {% block base_title %}
+    <title>{% block title %}Foundation 4{% endblock %}</title>
+    {% endblock base_title %}
+
+    {# Base Foundation CSS #}
+    {% block foundation_css %}
+    <link rel="stylesheet" href="{% static 'foundation/css/normalize.css' %}" />
+    <link rel="stylesheet" href="{% static 'foundation/css/foundation.min.css' %}" />
+    {% endblock foundation_css %}
+    
+    {# Custom CSS #}
+    {% block css %}{% endblock %}
+
+    {# Override if you need another version of modernizr #}
+    {% block foundation_modernizer %}
+    <script src="{% static 'foundation/js/vendor/custom.modernizr.js' %}"></script>
+    {% endblock foundation_modernizer %}
+
+    {# Custom head JS #}
+    {% block head_js %}{% endblock head_js %}
+</head>
+<body {% block body_attr %}{% endblock body_attr %}>
+    {# Main content goes here #}
+    {% block foundation_body %}{% endblock foundation_body %}
+ 
+    {# Custom JS #}
+    {% block body_js %}{% endblock body_js %}
+
+    {# Init Foundation #}
+    {% block foundation_js_init %}
+   <script src="{% static 'foundation/js/foundation.min.js' %}"></script> 
+   <script>
+        $(document).foundation();
+    </script>
+    {% endblock foundation_js_init %}
+</body>
+</html>
