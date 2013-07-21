@@ -10,5 +10,7 @@ App.ProjectsRoute = Ember.Route.extend
 
 App.Store = DS.Store.extend
   revision: 12
-  adapter: 'DS.FixtureAdapter'
+  adapter: 'DS.DjangoRESTAdapter'
+
+
 
