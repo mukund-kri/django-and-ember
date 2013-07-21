@@ -33,3 +33,7 @@ nosetests.xml
 .mr.developer.cfg
 .project
 .pydevproject
+
+# My project specific excludes
+*/COFFEESCRIPT_CACHE/*       
+*~

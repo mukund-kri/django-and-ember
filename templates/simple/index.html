@@ -1,12 +1,40 @@
-{% extends 'foundation/base.html' %}
+{% extends 'layouts/base.html' %}
 {% load coffeescript %}
 
 {% block foundation_body %}
-<h1>Hello Ember</h1>
+
+<script type="text/x-handlebars" data-template-name="index">
+  <h1>Hello Ember</h1>
+  {{outlet}}
+</script>
+
+{% verbatim %}
+<script type="text/x-handlebars" id="projects">
+  <ul>
+    {{#each controller}}
+    <li>
+      {{name}}
+    </li>
+    {{/each}}
+  </ul>
+</script>
+{% endverbatim %}
+
 {% endblock %}
 
 {% block body_js %}
+<script src="/static/scripts/js/libs/jquery-1.9.1.js"></script>
+<script src="/static/scripts/js/libs/handlebars-1.0.0-rc.4.js"></script>
+<script src="/static/scripts/js/libs/ember-1.0.0-rc.6.js"></script>
+<script src="/static/scripts/js/libs/ember-data-latest.js"></script>
+<script src="/static/scripts/js/libs/ember-data-django-rest-adapter.js"></script>
 <script type="text/javascript"
         src="/static/{% coffeescript 'scripts/coffee/app.coffee' %}">
+</script>
+<script type="text/javascript"
+        src="/static/{% coffeescript 'scripts/coffee/models.coffee' %}">
+</script>
+<script type="text/javascript"
+        src="/static/{% coffeescript 'scripts/coffee/fixtures.coffee' %}">
 </script>
 {% endblock body_js %}

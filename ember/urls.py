@@ -1,17 +1,32 @@
 from django.conf.urls import patterns, include, url
+from django.contrib import admin
+from rest_framework import viewsets, routers
 
-# Uncomment the next two lines to enable the admin:
-# from django.contrib import admin
-# admin.autodiscover()
+from simple.models import Project
 
-urlpatterns = patterns('',
-    # Examples:
-    # url(r'^$', 'ember.views.home', name='home'),
+
+admin.autodiscover()
+
+
+class ProjectViewSet(viewsets.ModelViewSet):
+    model = Project
+
+router = routers.DefaultRouter()
+router.register(r'projects', ProjectViewSet)
+
+
+urlpatterns = patterns(
+    '',
+ 
+    url(r'^$', 'simple.views.index', name='home'),
     # url(r'^ember/', include('ember.foo.urls')),
 
-    # Uncomment the admin/doc line below to enable admin documentation:
-    # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
+    # Add zurb foundation resources
+    url(r'^foundation/', include('foundation.urls')),
 
-    # Uncomment the next line to enable the admin:
-    # url(r'^admin/', include(admin.site.urls)),
+    # Browsable API for debugging
+    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    url('^', include(router.urls)),
+
+    url(r'^admin/', include(admin.site.urls)),
 )
