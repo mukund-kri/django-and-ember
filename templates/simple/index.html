@@ -14,6 +14,13 @@
     {{#each controller}}
     <li>
       {{name}}
+      <ul>
+	{{#each tasks}}
+	<li>
+	  {{name}}, {{id}}
+	</li>
+	{{/each}}
+      </ul>
     </li>
     {{/each}}
   </ul>

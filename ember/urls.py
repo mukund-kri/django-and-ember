@@ -1,19 +1,9 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
-from rest_framework import viewsets, routers
-
-from simple.models import Project
+from rest_framework import routers
 
 
 admin.autodiscover()
-
-
-class ProjectViewSet(viewsets.ModelViewSet):
-    model = Project
-
-router = routers.DefaultRouter()
-router.register(r'projects', ProjectViewSet)
-
 
 urlpatterns = patterns(
     '',
@@ -26,7 +16,8 @@ urlpatterns = patterns(
 
     # Browsable API for debugging
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    url('^', include(router.urls)),
+    url('^rest/', include('restapi.urls')),
+
 
     url(r'^admin/', include(admin.site.urls)),
 )
